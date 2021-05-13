@@ -12,7 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "eta": "^1.12.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",

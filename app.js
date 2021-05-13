@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/add', (req, res) => {
+  res.render('add', { name: 'Hendi' })
+});
+
 app.listen(3000, () => {
   console.log('the server listen on port 3000');
 });
