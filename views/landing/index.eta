@@ -2,3 +2,10 @@
 
 <h3>Favorite Template Engine is <%= it.favorite %></h3>
 <p>Because is <%= it.reasons.join(', ') %></p>
+<h4>PROS</h4>
+<ul>
+  <% it.reasons.forEach(function(user){ %> 
+    <li><%= user %></li>
+  <% }) %>
+</ul>
+<% console.log("Hi") %>

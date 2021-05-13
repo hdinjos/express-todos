@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.render("landing", {
     favorite: "Eta",
     name: "Hendi",
-    reasons: ["fast, lightweight", "simple"]
+    reasons: ["fast", "lightweight", "simple"]
   });
 });
 
