@@ -3,6 +3,8 @@
   <h2>List Todos</h2>
   <hr/>
   <ul>
-    <li>Title 1 <span class="badge bg-success">completed</span></li>
+    <% it.todos.forEach(todo =>{ %>
+      <li><%= todo.activity %> <span class="badge <%= todo.status ? 'bg-success': 'bg-danger'%>"><%= todo.status ? "Completed" : "Not Completed" %></span></li>
+    <%})%>
   </ul>
 </div>
