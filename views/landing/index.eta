@@ -1,0 +1,4 @@
+<% layout('../layout/index') %>
+
+<h3>Favorite Template Engine is <%= it.favorite %></h3>
+<p>Because is <%= it.reasons.join(', ') %></p>
