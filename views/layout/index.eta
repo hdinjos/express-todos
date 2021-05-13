@@ -9,7 +9,10 @@
     <title>Todo List Apps</title>
   </head>
   <body>
-    <%~ it.body %>
-    <%~ includeFile('./footer', it) %>
+    <%~ includeFile('./header') %>
+    <div class="container">
+      <%~ it.body %>
+      <%~ includeFile('./footer', it) %>
+    </div>
   </body>
 </html>
