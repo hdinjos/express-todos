@@ -2,15 +2,15 @@
 
 <h2>Add Todo</h2>
 <hr/>
-<form>
+<form action="/add" method="post">
   <div class="row">
     <div class="col-md-3">
       <label for="activity" class="form-label">Activity</label>
-      <input type="text" class="form-control" id="activity">
+      <input name="activity" type="text" class="form-control" id="activity">
     </div>
     <div class="col-12">
       <div class="form-check mt-1">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <input name="status" class="form-check-input" type="checkbox" id="gridCheck">
         <label class="form-check-label" for="gridCheck">
           Status
         </label>
