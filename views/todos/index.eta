@@ -4,7 +4,14 @@
   <hr/>
   <ul>
     <% it.todos.forEach(todo =>{ %>
-      <li><%= todo.activity %> <span class="badge <%= todo.status ? 'bg-success': 'bg-danger'%>"><%= todo.status ? "Completed" : "Not Completed" %></span> <a class="btn btn-info" href="/todos/<%= todo.id %>">Edit</a></li>
+      <li><%= todo.activity %>
+        <form action="/<%= todo.id %>" method="post">
+        <span class="badge <%= todo.status ? 'bg-success': 'bg-danger'%>"><%= todo.status ? "Completed" : "Not Completed" %>
+        </span>
+        <a class="btn btn-info" href="/todos/<%= todo.id %>">Edit</a>
+          <button type="submit" class="btn btn-info">Remove</button>
+        </form>
+      </li>
     <%})%>
   </ul>
 </div>

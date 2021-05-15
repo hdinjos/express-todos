@@ -77,6 +77,19 @@ const todosActionUpdate = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+const todosDestroy = async (req, res) => {
+  try {
+    const query = {
+      text: `DELETE FROM todos WHERE id = $1`,
+      values: [req.params.id]
+    };
+    await pool.query(query);
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export {
@@ -84,5 +97,6 @@ export {
   todosViewCreate,
   todosActionCreate,
   todosViewUpdate,
-  todosActionUpdate
+  todosActionUpdate,
+  todosDestroy
 };
