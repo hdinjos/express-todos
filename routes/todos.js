@@ -1,9 +1,9 @@
 import express from 'express';
-import { createView, createAction, listTodos } from '../controllers/todos';
+import { todosList, todosViewCreate, todosActionCreate } from '../controllers/todos';
 const todos = express.Router();
 
-todos.get('/', listTodos);
-todos.get('/add', createView);
-todos.post('/add', createAction);
-
+todos.get('/', todosList);
+todos.route('/add')
+  .get(todosViewCreate)
+  .post(todosActionCreate);
 export default todos;

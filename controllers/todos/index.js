@@ -1,6 +1,6 @@
 import pool from '../config';
 
-const listTodos = async (req, res) => {
+const todosList = async (req, res) => {
   try {
     const { rows } = await pool.query(`SELECT * FROM todos`);
     res.render('landing', {
@@ -9,13 +9,16 @@ const listTodos = async (req, res) => {
       reasons: ["fast", "lightweight", "simple"],
       todos: rows
     });
-    console.log(rows);
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-const createAction = async (req, res) => {
+const todosViewCreate = (req, res) => {
+  res.render('add', { name: 'Hendi' })
+};
+
+const todosActionCreate = async (req, res) => {
   try {
     const payload = {
       activity: '',
@@ -35,14 +38,10 @@ const createAction = async (req, res) => {
     await pool.query(query);
     res.redirect('/');
   } catch (err) {
-    console.logz('err');
+    console.log('err');
   }
-}
-
-const createView = (req, res) => {
-  res.render('add', { name: 'Hendi' })
-}
+};
 
 export {
-  createView, createAction, listTodos
-}
+  todosList, todosViewCreate, todosActionCreate
+};
