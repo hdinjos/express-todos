@@ -1,0 +1,10 @@
+<% layout('../layout/index') %>
+<div>
+  <h2>List Todos</h2>
+  <hr/>
+  <ul>
+    <% it.todos.forEach(todo =>{ %>
+      <li><%= todo.activity %> <span class="badge <%= todo.status ? 'bg-success': 'bg-danger'%>"><%= todo.status ? "Completed" : "Not Completed" %></span> <a class="btn btn-info" href="/todos/<%= todo.id %>">Edit</a></li>
+    <%})%>
+  </ul>
+</div>
