@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node app.js",
-    "migrate": "nodemon --exec babel-node ./migrations/index.js"
+    "migrate": "nodemon --exec babel-node ./migrations/index.js",
+    "unmigrate": "nodemon --exec babel-node ./migrations/zero.js"
   },
   "keywords": [],
   "author": "",

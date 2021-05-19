@@ -6,7 +6,7 @@ const runMigrationTodos = async () => {
       id SERIAL PRIMARY KEY,
       activity VARCHAR(20) NOT NULL,
       status BOOLEAN NOT NULL,
-      created_at TIMESTAMP
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )`;
     await pool.query(query);
     await pool.end();
