@@ -1,7 +1,20 @@
 <% layout('../layout/index') %>
-
 <h2>Add Todo</h2>
 <hr/>
+<% if (it.err === 0 ) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= it.msg%>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } else if(it.err === 1) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= it.msg%>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } else  { %>
+  <div></div>
+<% } %>
+
 <form action="/add" method="post">
   <div class="row">
     <div class="col-md-3">
@@ -21,3 +34,11 @@
     </div>
 </div>
 </form>
+
+<script>
+  setTimeout(()=> {
+    let alertNode = document.querySelector('.alert');
+    let alerts = new bootstrap.Alert(alertNode);
+    alerts.close();
+  }, 5000);
+</script>

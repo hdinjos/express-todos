@@ -31,14 +31,21 @@ const todosActionCreate = async (req, res) => {
       payload.activity = req.body.activity;
       payload.status = true;
     };
-    const query = {
-      text: `INSERT INTO todos(activity, status) VALUES($1, $2)`,
-      values: [payload.activity, payload.status]
-    };
-    await pool.query(query);
-    res.redirect('/');
+    //validate
+    if (payload.activity.length > 20) {
+      res.render('todos/create', { err: 0, msg: `Activity field can't more than 20 character`, name: 'Hendi' });
+    } else if (payload.activity === '') {
+      res.render('todos/create', { err: 1, msg: `Activity field must be filled`, name: 'Hendi' });
+    } else {
+      const query = {
+        text: `INSERT INTO todos(activity, status) VALUES($1, $2)`,
+        values: [payload.activity, payload.status]
+      };
+      await pool.query(query);
+      res.redirect('/');
+    }
   } catch (err) {
-    console.log('err');
+    console.log(err);
   }
 };
 
