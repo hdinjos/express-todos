@@ -5,14 +5,14 @@ using framework express with eta templating engine
 
 ## Running App
 
-## Development
+### Development
 
 `npm run dev`
 
-## Migrate datebase
+### Migrate database
 
 `npm run migrate`
 
-## Remove migrate database
+### Remove migrate database
 
 `npm run unmigrate`
