@@ -2,13 +2,18 @@ import pool from '../config';
 
 const todosList = async (req, res) => {
   try {
-    const { rows } = await pool.query(`SELECT * FROM todos ORDER BY id`);
-    res.render('todos', {
-      favorite: "Eta",
-      name: "Hendi",
-      reasons: ["fast", "lightweight", "simple"],
-      todos: rows
-    });
+    let email = req.session.email;
+    if (!email) {
+      res.redirect('/auth/login');
+    } else {
+      const { rows } = await pool.query(`SELECT * FROM todos ORDER BY id`);
+      res.render('todos', {
+        favorite: "Eta",
+        name: "Hendi",
+        reasons: ["fast", "lightweight", "simple"],
+        todos: rows
+      });
+    };
   } catch (err) {
     console.log(err);
   }
