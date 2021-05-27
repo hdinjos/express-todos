@@ -9,7 +9,11 @@
     <title>Todo List Apps</title>
   </head>
   <body>
-    <%~ includeFile('./header') %>
+  <% if (it.route === 'login') { %>
+  <div></div>
+  <%} else { %>
+    <%~ includeFile('./header', {user:it.user}) %>
+  <% } %>
     <div class="container">
       <%~ it.body %>
       <%~ includeFile('./footer', it) %>
