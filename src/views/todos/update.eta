@@ -1,4 +1,4 @@
-<% layout('../layout/index') %>
+<% layout('../layout/index', {user: it.user}) %>
 <h2>Edit Todo</h2>
 <hr/>
 <form action="/todos/<%= it.todo.id %>" method="post">

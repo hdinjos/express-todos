@@ -8,6 +8,7 @@ const todosList = async (req, res) => {
       name: "Hendi",
       reasons: ["fast", "lightweight", "simple"],
       todos: rows,
+      user: req.session.email,
     });
   } catch (err) {
     console.log(err);
@@ -15,7 +16,7 @@ const todosList = async (req, res) => {
 };
 
 const todosViewCreate = (req, res) => {
-  res.render("todos/create", { name: "Hendi" });
+  res.render("todos/create", { name: "Hendi", user: req.session.email });
 };
 
 const todosActionCreate = async (req, res) => {
@@ -64,7 +65,11 @@ const todosViewUpdate = async (req, res) => {
       values: [req.params.id],
     };
     const { rows } = await pool.query(query);
-    res.render("todos/update", { name: "Hendi", todo: rows[0] });
+    res.render("todos/update", {
+      name: "Hendi",
+      todo: rows[0],
+      user: req.session.email,
+    });
   } catch (err) {
     console.log(err);
   }

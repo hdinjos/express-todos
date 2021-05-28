@@ -1,6 +1,5 @@
-<% layout('../layout/index') %>
+<% layout('../layout/index', {user: it.user}) %>
 <div>
-  <% /* <div><%= it.userEmail %></div> */ %>
   <h2>List Todos</h2>
   <hr/>
   <ul>

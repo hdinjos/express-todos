@@ -28,7 +28,7 @@ app.use(
 );
 
 app.use("/auth", auth);
-app.use(checkLogin);
+// app.use(checkLogin);
 app.use("/", todos);
 app.use("/items", items);
 
