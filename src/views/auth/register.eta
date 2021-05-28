@@ -19,7 +19,7 @@
         </div>
       </div>
       </div>
-        <div class="text-center mt-3">Belum Punya Akun? <a href="/auth/register">Daftar Sekarang</a></div>
+        <div class="text-center mt-3">Sudah Punya Akun? <a href="/auth/register">Masuk Sekarang</a></div>
     </div>
     </form>
 </div>
