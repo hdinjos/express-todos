@@ -3,10 +3,22 @@ const registerView = (req, res) => {
 };
 
 const registerAction = (req, res) => {
-  req.session.email = req.body.email;
-  if (!req.session.email) {
-    return;
+  let password = req.body.password;
+  let retypePassword = req.body.retypePassword;
+  if (password !== retypePassword) {
+    res.render("auth/register", {
+      err: 0,
+      msg: "Password and retype password must same",
+    });
   } else {
-    res.redirect("/");
+    req.session.email = req.body.email;
+    if (!req.session.email) {
+      // return;
+      res.redirect("/auth/register");
+    } else {
+      res.redirect("/");
+    }
   }
 };
+
+export { registerView, registerAction };
