@@ -1,0 +1,7 @@
+<% layout('../layout/index', {user: it.user}) %>
+<div>
+  <h2>Profile User</h2>
+  <hr/>
+  <h4>Email <%= it.user %></h4>
+  <h4>Akses Sebagai <%= it.role%></h4>
+</div>

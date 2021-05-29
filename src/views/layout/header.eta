@@ -20,14 +20,12 @@
                 <%= it.user %>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                 <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <% /* <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
-        </li> */ %>
         <%} else {%>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>

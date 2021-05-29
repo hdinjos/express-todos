@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import session from "express-session";
 import { renderFile } from "eta";
-import { todos, items, auth } from "./routes";
+import { todos, items, auth, user } from "./routes";
 import checkLogin from "./controllers/auth/sessions";
 const app = express();
 
@@ -29,6 +29,7 @@ app.use(
 
 app.use("/auth", auth);
 // app.use(checkLogin);
+app.use("/user", user);
 app.use("/", todos);
 app.use("/items", items);
 
