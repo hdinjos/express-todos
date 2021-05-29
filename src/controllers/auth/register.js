@@ -23,10 +23,15 @@ const registerAction = async (req, res) => {
         const salt = genSaltSync(10);
         const hash = hashSync(password, salt);
         const query = {
-          text: `INSERT INTO auth(email, password) VALUES($1,$2)`,
+          text: `INSERT INTO auth(email, password) VALUES($1,$2) RETURNING id`,
           values: [email, hash],
         };
-        await pool.query(query);
+        const { rows } = await pool.query(query);
+        const queryUser = {
+          text: `INSERT INTO users(auth_id) values($1)`,
+          values: [rows[0].id],
+        };
+        await pool.query(queryUser);
         res.redirect("/");
       } catch (err) {
         console.log(err);
