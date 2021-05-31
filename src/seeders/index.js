@@ -16,7 +16,6 @@ const UserAdmin = async () => {
     };
     await pool.query(queryUser);
     console.log("user admin created successfull");
-    process.exit(0);
   } catch (err) {
     console.log(err);
   }
