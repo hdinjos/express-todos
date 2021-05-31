@@ -2,6 +2,50 @@
 <div>
   <h2>Profile User</h2>
   <hr/>
-  <h4>Email <%= it.user %></h4>
-  <h4>Akses Sebagai <%= it.role%></h4>
+  <h3>Email: <%= it.user %></h3>
+  <% if (!it.names) {%>
+    <h3>Name: belum ada</h3>
+  <%} else {%>
+    <h3>Name: <%= it.names %></h3>
+  <%}%>
+  <% if (!it.address) {%>
+    <h3>Address: belum ada</h3>
+  <%} else {%>
+    <h3>Address: <%= it.address %></h3>
+  <%}%>
+  <h3>Akses Sebagai <%= it.role %></h3>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+    Edit Profile
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfile" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfile">Edit Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="POST" action="/user/profile/update">
+          <div class="modal-body">
+            <div>
+              <label for="names" class="form-label">Name</label>
+              <input value="<%= it.names %>" name="names" class="form-control" type="text" placeholder="Budi Nuswantara" aria-label="default input example">
+            </div>
+            <div class="mt-2">
+              <label for="address" class="form-label">Address</label>
+              <input value="<%= it.address%>" name="address" class="form-control" type="text" placeholder="Mampang Prapat, Jakarta Selatan" aria-label="default input example">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info text-white">Save changes</button>
+          </div>
+        <form>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-info">Ganti password</button>
 </div>
