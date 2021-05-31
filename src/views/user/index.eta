@@ -27,7 +27,7 @@
           <h5 class="modal-title" id="editProfile">Edit Profile</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form method="POST" action="/user/profile/update">
+        <form id="updateProfile" method="POST" action="/user/profile/update">
           <div class="modal-body">
             <div>
               <label for="names" class="form-label">Name</label>
@@ -40,12 +40,62 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-info text-white">Save changes</button>
+            <button id="btnUpdateProfile" type="submit" class="btn btn-info text-white">Save changes</button>
           </div>
         <form>
       </div>
     </div>
   </div>
 
-  <button class="btn btn-info">Ganti password</button>
+  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+    Ganti Password
+  </button>
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePassword" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="changePassword">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="changePasswords" method="POST" action="/auth/change-password">
+          <div class="modal-body">
+            <div>
+              <label for="oldPassword" class="form-label">Old Password</label>
+              <input name="oldPassword" class="form-control" type="text" aria-label="default input example">
+            </div>
+            <div class="mt-2">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input name="newPassword" class="form-control" type="text" aria-label="default input example">
+            </div>
+            <div class="mt-2">
+              <label for="retypeNewPassword" class="form-label">Retype New Password</label>
+              <input name="retypeNewPassword" class="form-control" type="text" aria-label="default input example">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="btnChangePassword" type="submit"  class="btn btn-info text-white">Save changes</button>
+          </div>
+        <form>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  const submitUpdate = document.querySelector('#btnUpdateProfile')
+  submitUpdate.addEventListener('click', () => {
+    const updateForm = document.querySelector('#updateProfile')
+    updateForm.submit();
+    console.log('halo');
+  });
+
+  const submitChange = document.querySelector('#btnChangePassword')
+  function tes() {
+    const changeForm = document.querySelector('#changePasswords')
+    console.log(changeForm)
+    changeForm.submit();
+  }
+  submitChange.addEventListener('click', tes);
+  console.log(submitChange);
+</script>
