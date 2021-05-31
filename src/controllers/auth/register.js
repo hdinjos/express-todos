@@ -19,21 +19,28 @@ const registerAction = async (req, res) => {
     if (!req.session.email) {
       res.redirect("/auth/register");
     } else {
+      const client = await pool.connect();
       try {
         const salt = genSaltSync(10);
         const hash = hashSync(password, salt);
-        const query = {
+        await client.query("BEGIN");
+        const queryAuth = {
           text: `INSERT INTO auth(email, password) VALUES($1,$2) RETURNING id`,
           values: [email, hash],
         };
-        const { rows } = await pool.query(query);
+        const { rows } = await client.query(queryAuth);
         const queryUser = {
           text: `INSERT INTO users(auth_id) values($1)`,
           values: [rows[0].id],
         };
-        await pool.query(queryUser);
+        await client.query(queryUser);
+        await client.query("COMMIT");
+        await client.release();
         res.redirect("/");
       } catch (err) {
+        await client.query("ROLLBACK");
+        await client.release();
+        res.redirect("/auth/register");
         console.log(err);
       }
     }
