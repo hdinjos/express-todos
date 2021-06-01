@@ -42,7 +42,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button id="btnUpdateProfile" type="submit" class="btn btn-info text-white">Save changes</button>
           </div>
-        <form>
+        </form>
       </div>
     </div>
   </div>
@@ -76,26 +76,11 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button id="btnChangePassword" type="submit"  class="btn btn-info text-white">Save changes</button>
           </div>
-        <form>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  const submitUpdate = document.querySelector('#btnUpdateProfile')
-  submitUpdate.addEventListener('click', () => {
-    const updateForm = document.querySelector('#updateProfile')
-    updateForm.submit();
-    console.log('halo');
-  });
-
-  const submitChange = document.querySelector('#btnChangePassword')
-  function tes() {
-    const changeForm = document.querySelector('#changePasswords')
-    console.log(changeForm)
-    changeForm.submit();
-  }
-  submitChange.addEventListener('click', tes);
-  console.log(submitChange);
 </script>
