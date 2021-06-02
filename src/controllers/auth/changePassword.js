@@ -32,11 +32,13 @@ const changePassword = async (req, res) => {
           }
         });
       } else {
+        // belum solving untuk alert
         res.redirect(
           "/user/profile/?err=1&msg=new+password+and+retype+new+password+must+same"
         );
       }
     } else {
+      // belum solving untuk alert
       res.redirect("/user/profile/?err=0&msg=old+password+is+not+valid");
     }
   } catch (err) {

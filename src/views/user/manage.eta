@@ -1,0 +1,29 @@
+<% layout('../layout/index', {user: it.user}) %>
+<div>
+  <h2>Management User</h2>
+  <hr/> 
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody class="">
+      <tr>
+        <td>1</td>
+        <td>hh@gmil.com</td>
+        <td>ADMIN</td>
+        <td>Mantap</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>hh@gmil.com</td>
+        <td>ADMIN</td>
+        <td>Mantap</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
