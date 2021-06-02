@@ -1,4 +1,4 @@
-<% layout('../layout/index', {user: it.user}) %>
+<% layout('../layout/index') %>
 <div>
   <h2>List Todos</h2>
   <hr/>

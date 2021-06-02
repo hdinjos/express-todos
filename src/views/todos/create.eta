@@ -1,4 +1,4 @@
-<% layout('../layout/index', {user: it.user}) %>
+<% layout('../layout/index') %>
 <h2>Add Todo</h2>
 <hr/>
 <% if (it.err === 0 ) { %>

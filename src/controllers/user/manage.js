@@ -1,5 +1,6 @@
 const manage = (req, res) => {
-  res.render("user/manage", { name: "Hendi" });
+  const { email, role } = req.session;
+  res.render("user/manage", { name: "Hendi", role: role, user: email });
 };
 
 export default manage;

@@ -6,9 +6,9 @@ const todosList = async (req, res) => {
     res.render("todos", {
       favorite: "Eta",
       name: "Hendi",
-      reasons: ["fast", "lightweight", "simple"],
       todos: rows,
       user: req.session.email,
+      role: req.session.role,
     });
   } catch (err) {
     console.log(err);
@@ -16,7 +16,11 @@ const todosList = async (req, res) => {
 };
 
 const todosViewCreate = (req, res) => {
-  res.render("todos/create", { name: "Hendi", user: req.session.email });
+  res.render("todos/create", {
+    name: "Hendi",
+    user: req.session.email,
+    role: req.session.role,
+  });
 };
 
 const todosActionCreate = async (req, res) => {
@@ -69,6 +73,7 @@ const todosViewUpdate = async (req, res) => {
       name: "Hendi",
       todo: rows[0],
       user: req.session.email,
+      role: req.session.role,
     });
   } catch (err) {
     console.log(err);

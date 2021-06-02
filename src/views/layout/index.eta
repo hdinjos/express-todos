@@ -12,7 +12,7 @@
   <% if (it.route === 'login') { %>
   <div></div>
   <%} else { %>
-    <%~ includeFile('./header', {user:it.user}) %>
+    <%~ includeFile('./header', {user:it.user, role:it.role}) %>
   <% } %>
     <div class="container">
       <%~ it.body %>

@@ -1,8 +1,6 @@
 import pool from "../config";
 
 const detailProfile = async (req, res) => {
-  console.log(req.query.msg);
-  console.log(req.query.err);
   const query = {
     text: `SELECT name, address FROM users INNER JOIN auth ON users.auth_id=auth.id WHERE email=$1`,
     values: [req.session.email],
