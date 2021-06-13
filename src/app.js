@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import session from "express-session";
+import flashMesssage from "express-flash";
 import { renderFile } from "eta";
 import { todos, items, auth, user } from "./routes";
 import checkLogin from "./controllers/auth/sessions";
@@ -15,6 +16,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(flashMesssage());
 
 //configure tamplate engine
 app.engine("eta", renderFile);

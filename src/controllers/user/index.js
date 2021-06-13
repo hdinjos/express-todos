@@ -12,6 +12,7 @@ const detailProfile = async (req, res) => {
     role: req.session.role,
     names: users.rows[0].name,
     address: users.rows[0].address,
+    validForm: req.flash("info"),
   });
 };
 

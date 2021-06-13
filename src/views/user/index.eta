@@ -31,11 +31,11 @@
           <div class="modal-body">
             <div>
               <label for="names" class="form-label">Name</label>
-              <input value="<%= it.names %>" name="names" class="form-control" type="text" placeholder="Budi Nuswantara" aria-label="default input example">
+              <input value="<%= !it.names ? '' : it.names %>" name="names" class="form-control" type="text" placeholder="Budi Nuswantara" aria-label="default input example">
             </div>
             <div class="mt-2">
               <label for="address" class="form-label">Address</label>
-              <input value="<%= it.address%>" name="address" class="form-control" type="text" placeholder="Mampang Prapat, Jakarta Selatan" aria-label="default input example">
+              <input value="<%= !it.address ? '' : it.address %>" name="address" class="form-control" type="text" placeholder="Mampang Prapat, Jakarta Selatan" aria-label="default input example">
             </div>
           </div>
           <div class="modal-footer">
@@ -59,6 +59,21 @@
         </div>
         <form id="changePasswords" method="POST" action="/auth/change-password">
           <div class="modal-body">
+            <% if (it.validForm.length > 0 && it.validForm[0].code === 1) { %>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span><%= it.validForm[0].msg %></span>
+              </div>
+            <%} else if (it.validForm.length > 0 && it.validForm[0].code === 2) {%>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span><%= it.validForm[0].msg %></span>
+              </div>
+            <%} else if (it.validForm.length > 0 && it.validForm[0].code === 3) {%>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span><%= it.validForm[0].msg %></span>
+              </div>
+            <%}%>
+
+
             <div>
               <label for="oldPassword" class="form-label">Old Password</label>
               <input name="oldPassword" class="form-control" type="text" aria-label="default input example">
@@ -83,4 +98,27 @@
 </div>
 
 <script>
+  const modalPassowordUp = () => {
+    const modalPassword = new bootstrap.Modal(document.getElementById('changePasswordModal'), {
+      keyboard: true
+    });
+    const modalTogglePassword = document.getElementById('changePasswordModal');
+    const formPasswordValid = '<%= it.validForm %>';
+    if (formPasswordValid.length > 0 ) {
+      modalPassword.show(modalTogglePassword);
+    } else {
+      modalPassword.hide();
+    }
+  };
+
+  const closeAlert = () => {
+    setTimeout(()=> {
+      let alertNode = document.querySelector('.alert');
+      let alerts = new bootstrap.Alert(alertNode);
+      alerts.close();
+    }, 5000);
+  }
+
+  closeAlert();
+  modalPassowordUp();
 </script>
