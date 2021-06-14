@@ -1,7 +1,6 @@
 <% layout('../layout/index', {user: it.user}) %>
 <div>
   <h2>Management User</h2>
-  <div><% it.listUsers %></div>
   <hr/> 
   <table class="table table-hover">
     <thead>
@@ -14,9 +13,9 @@
     </thead>
     <tbody class="">
     <% it.listUsers.forEach((user, index)=> { %>
-      <tr>
+      <tr class="<%= it.user === user.email ? 'bg-dark text-white' : '' %>">
       <% if (user.email !== 'admin@gg.com') { %>
-        <td><%= index %></td>
+        <td><%= index %> </td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
         <td>
@@ -43,14 +42,14 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-info text-white">Save changes</button>
                 </div>
                 </form>
               </div>
             </div>
           </div>
         </td>
-        <% } %>
+        <%}%>
       </tr>
     
     <% })%>
