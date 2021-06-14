@@ -15,7 +15,8 @@
     <tbody class="">
     <% it.listUsers.forEach((user, index)=> { %>
       <tr>
-        <td><%= index+1 %></td>
+      <% if (user.email !== 'admin@gg.com') { %>
+        <td><%= index %></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
         <td>
@@ -32,22 +33,26 @@
                   <h5 class="modal-title" id="exampleModalLabel">Change Role</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form action="/user/manage/role" method="POST">
                 <div class="modal-body">
-                  <select class="form-select" name="role">
+                  <select id="selectRole" class="form-select" name="role">
                     <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %> >ADMIN</option>
                     <option value="GENERIC" <%= user.role === 'GENERIC' ? 'selected' : '' %>>GENERIC</option>
                   </select>
+                  <input name="userId" hidden value="<%= user.id %>" id="roleId" type="text"/>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
-
         </td>
+        <% } %>
       </tr>
+    
     <% })%>
     </tbody>
   </table>
